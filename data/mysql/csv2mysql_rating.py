@@ -3,8 +3,8 @@ import pymysql
 from config import conn
 
 # 读取表格信息
-filename = 'user.csv'
-data = pd.read_excel(filename, header=1)
+filename = 'ratings.csv'
+data = pd.read_csv(filename, header=1)
 
 # 建立 MySQL 连接
 cursor = conn.cursor()
@@ -20,6 +20,6 @@ for i in range(0, len(data)):
     cursor.execute(query, values)
     
 cursor.close()
-db.commit()
+conn.commit()
 print("数据导入成功")
-db.close()
+conn.close()

@@ -22,7 +22,6 @@ for i in range(0, len(data)):
     cursor.execute(query, values)
     
 cursor.close()
-db.commit()
+conn.commit()
 print("数据导入成功")
-db.close()
-
+conn.close()
