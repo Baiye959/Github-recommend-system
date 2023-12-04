@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Github Recommend</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+</head>
+
+<body>
+    <h1 id="title"></h1>
+    <script>
+        const Http = new XMLHttpRequest();
+        const url='http://47.106.213.193:5000/hello';
+        Http.open("GET", url);
+        Http.send();
+
+        Http.onreadystatechange = (e) => {
+            console.log(Http.responseText)
+            document.getElementById('title').innerHTML = Http.responseText ;
+        }
+    </script>
+</body>
+
+</html>
