@@ -1,8 +1,9 @@
 from flask import Blueprint
 from flask import Flask, render_template ,jsonify, make_response, redirect, request, url_for, session
 from exts import db
-from models import GithubModel, RatingModel, CollectModel
+from models import GithubModel, RatingModel, CollectModel, EmbeddingManager
 import time
+
 
 
 bp = Blueprint("content", __name__, url_prefix="/content")
@@ -12,6 +13,7 @@ bp = Blueprint("content", __name__, url_prefix="/content")
 def content():
     id = request.args.get("id")
     github = GithubModel.query.filter_by(id=id).first()
+
 
     githubId = id
     userId = session['user_id']
@@ -23,7 +25,21 @@ def content():
         myrating = rating.rating
     if collect:
         is_collect = 1
-    return render_template("content.html", github = github, rating = myrating, is_collect = is_collect)
+    
+
+    mgr_github_embedding = EmbeddingManager("/root/html/scheduled/item_embedding.csv","id","features")
+    github_embedding = mgr_github_embedding.get_embedding(githubId)
+    github_ids = mgr_github_embedding.search_ids_by_embedding(github_embedding, 11)
+    print(github_ids)
+
+    recommend = []
+    # for github_id in github_ids:
+    #     github1 = GithubModel.query.get(github_id)
+    #     recommend.append(github1)
+    for i in range(1, 11):
+        github1 = GithubModel.query.get(github_ids[i])
+        recommend.append(github1)
+    return render_template("content.html", github = github, rating = myrating, is_collect = is_collect, recommend = recommend)
 
 
 @bp.route("/star", methods=['POST'])

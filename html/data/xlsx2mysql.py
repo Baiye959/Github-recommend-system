@@ -4,7 +4,7 @@ from config import conn
 
 # 读取表格信息
 filename = 'github_data.xlsx'
-data = pd.read_excel(filename, header=1)
+data = pd.read_excel(filename, header=0)
 
 # 获取一个mysql游标 Cursor
 cursor = conn.cursor()

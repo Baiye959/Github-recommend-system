@@ -4,7 +4,7 @@ from config import conn
 
 # 读取表格信息
 filename = 'ratings.csv'
-data = pd.read_csv(filename, header=1)
+data = pd.read_csv(filename, header=0)
 
 # 获取一个mysql游标 Cursor
 cursor = conn.cursor()
