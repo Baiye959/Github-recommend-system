@@ -38,4 +38,14 @@ CREATE TABLE IF NOT EXISTS `github_info`(
     `email` varchar(100) NOT NULL  COMMENT 'email',
     PRIMARY KEY (`id`)
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- 收藏
+-- userId,githubId
+-- 1,1
+ CREATE TABLE IF NOT EXISTS `collect`(
+    `id` INT UNSIGNED AUTO_INCREMENT,
+    `userId` int NOT NULL  COMMENT 'userId',
+    `githubId` int NOT NULL  COMMENT 'githubId',
+    PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
  ```

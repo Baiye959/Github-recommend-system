@@ -4,7 +4,7 @@ from config import conn
 
 # 读取表格信息
 filename = 'user.csv'
-data = pd.read_csv(filename, header=1)
+data = pd.read_csv(filename, header=0)
 
 # 建立 MySQL 连接
 cursor = conn.cursor()
