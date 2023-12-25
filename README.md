@@ -53,7 +53,7 @@ faiss-gpu
 ```Bash
 sudo apt update
 sudo apt upgrade
-sudo apt install python3 python-is-python3 upzip  netcat tmux openjdk-8-jdk apache2 mysql-server screen
+sudo apt install python3 python-is-python3 unzip openjdk-8-jdk apache2 mysql-server screen
 pip install -r requirements.txt
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 >> /etc/profile
 source /etc/profile
